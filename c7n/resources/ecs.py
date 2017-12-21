@@ -64,7 +64,7 @@ class ECSDescribeSource(query.ChildDescribeSource):
             for f in futures:
                 pid, services = futures[f]
                 if f.exception():
-                    self.manager.log('error fetching ecs services for cluster %s' % pid)
+                    self.manager.log.warning('error fetching ecs services for cluster %s' % pid)
                     continue
                 results.extend(f.result())
         return results
